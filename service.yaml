@@ -10,7 +10,7 @@ spec:
     app: playground
   ports:
       - port: 8888
-        targetPort: 8080
+        targetPort: 8888
   # ports:
   # - name: http
   #   port: 80
