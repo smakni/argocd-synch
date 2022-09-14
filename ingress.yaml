@@ -16,7 +16,7 @@ spec:
           service:
             name: playground
             port:
-              number: 80
+              number: 8888
         path: /
         pathType: ImplementationSpecific
 status:
