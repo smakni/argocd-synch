@@ -1,20 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+    traefik.ingress.kubernetes.io/rewrite-target: /
+  creationTimestamp: null
+  labels:
+    app: playground
   name: playground-ingress
 spec:
-  defaultBackend:
-      service:
-        name: playground
-        port:
-          number: 8888
-    - host:
-      http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: playground
-              port:
-                number: 8888
+  rules:
+  - http:
+      paths: /
+      - backend:
+          service:
+            name: playground
+            port:
+              number: 8888
+        path: /
+        pathType: ImplementationSpecific
+status:
+  loadBalancer: {}
